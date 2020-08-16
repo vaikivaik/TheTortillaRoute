@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <form novalidate [formGroup]="addForm" (ngSubmit)="submitPost()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" name="title" class="form-control" placeholder="Title" formControlName="title">
+      <!-- Text 4 validations -->
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.title.errors?.required && addForm.controls.title.touched">* Title cannot be
+        empty.</small>
+    </div>
+    <div class="form-group">
+      <label>Text</label>
+      <textarea class="form-control" aria-label="With textarea" name="text" placeholder="Write down the article..."
+        formControlName="text"></textarea>
+      <!-- Text 4 validations -->
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.text.errors?.maxlength && addForm.controls.text.touched">*
+        Article should be max. 600 characters in length.</small>
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.text.errors?.required && addForm.controls.text.touched">* This field cannot be
+        empty.</small>
+    </div>
+    <div class="form-group">
+      <input type="text" name="address" class="form-control" placeholder="Address" formControlName="address">
+      <!-- Text 4 validations -->
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.address.errors?.required && addForm.controls.address.touched">* Address cannot be
+        empty.</small>
+    </div>
+    <div class="form-group">
+      <label>Image: </label>
+      <input type="text" name="image" class="form-control" placeholder="Image URL address" formControlName="image">
+      <!-- Text 4 validations -->
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.image.errors?.required && addForm.controls.image.touched">* This field is
+        required.</small>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label class="col-sm-2 col-form-label">Date</label>
+        <div class="col-sm-10">
+          <input type="date" name="date" class="border border-secondary rounded" formControlName="date">
+        </div>
+      </div>
+      <!-- Text 4 validations -->
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.date.errors?.required && addForm.controls.date.touched">* Date cannot be empty.</small>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label class="col-sm-2 col-form-label">City</label>
+        <div class="col-sm-10">
+          <input type="text" name="location" class="form-control" placeholder="Indicate city address"
+            formControlName="location">
+        </div>
+      </div>
+      <!-- Text 4 validations -->
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.location.errors?.required && addForm.controls.location.touched">* This field is
+        required.</small>
+      <small class="form-text text-danger error"
+        *ngIf="addForm.controls.location.errors?.maxlength && addForm.controls.location.touched">* Please enter a valid
+        city.</small>
+    </div>
+    <input [disabled]="!addForm.valid" type="submit" class="btn btn-warning btn-block" value="Submit">
+  </form>
+</div>

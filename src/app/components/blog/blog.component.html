@@ -1,0 +1,46 @@
+<div class="bg-warning">
+  <div class=" container jumbotron bg-warning">
+    <p class="lead">When you think about traveling to Spain, what is the first thing that comes to your mind? Yes, we
+      already know the answer ... Spanish omelette! Well, we'd better start calling it properly: "Tortilla".
+    </p>
+
+    <p>It is everywhere, all bars and restaurants have them on their menus, they even have tortilla sandwiches ...crazy,
+      right? To be honest, we were a little skeptical about trying it but it turns out it was a fantastic discovery!
+      Anyway, we have tried the best and the "not so good" ones and, as eating delicious food puts us in a good mood,
+      we're going to share every place we discovered with you so...</p>
+    <hr class="my-4">
+    <h1 class="display-6 text-center text-white">Welcome to The Tortilla Route!</h1>
+    <hr class="my-4">
+
+  </div>
+</div>
+<span id="top"> </span>
+<div class="container">
+  <div class="card-columns">
+    <div *ngFor="let post of arrPosts">
+      <div class="card border-warning mb-3 align-right">
+        <img class="card-img-top" [src]="post.image" [alt]="post.title">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.text}}</p>
+          <p class="card-text">Address: {{post.address}}</p>
+          <p class="card-text">City: {{(post.location).toUpperCase()}}</p>
+          <small class="card-text">Date: {{post.date}}</small> <br><br>
+          <div class="d-flex">
+            <a href="#top" class="btn btn-warning btn-sm mr-auto ">Back to top <svg width="1em" height="1em"
+                viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path fill-rule="evenodd"
+                  d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
+                <path fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
+              </svg></a>
+            <button class="btn btn-sm btn-success" (click)="onEdit(post.id)">Editar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
