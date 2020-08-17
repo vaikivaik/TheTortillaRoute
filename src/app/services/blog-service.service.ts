@@ -130,11 +130,20 @@ export class BlogServiceService {
   getAllPosts(): Post[] {
     return this.arrPosts;
   }
+
   addLocation(pLocation): string {
     pLocation.id = this.currentLocId;
     this.arrLocations.push(pLocation);
     this.currentLocId++;
     console.log(this.arrLocations);
     return 'Location successfully added';
+  }
+  getPostsByName(pSearch): Post[] {
+    let filteredPosts: Post[];
+
+    filteredPosts = this.arrPosts.filter((post) => {
+      return post.title.toLowerCase().includes(pSearch.toLowerCase());
+    });
+    return filteredPosts;
   }
 }

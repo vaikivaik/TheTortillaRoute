@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlogServiceService } from 'src/app/services/blog-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { Location } from 'src/app/models/location.model';
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -10,6 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FormularioComponent implements OnInit {
   addForm: FormGroup;
+
+  arrLocations: Location[];
 
   constructor(
     private blogServiceService: BlogServiceService,
@@ -33,6 +37,8 @@ export class FormularioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.arrLocations = this.blogServiceService.getAllLocations();
+
     this.activatedRoute.params.subscribe((params) => {
       const postId = params.postId;
 
@@ -63,9 +69,11 @@ export class FormularioComponent implements OnInit {
     if (this.addForm.value.id) {
       // Update
       post = this.blogServiceService.updatePost(this.addForm.value);
+      alert('Post updated');
     } else {
       // Add new
       post = this.blogServiceService.addPost(this.addForm.value);
+      alert('Post added');
     }
     console.log(post);
     // Luego de addPost, redireccionar a '/home'

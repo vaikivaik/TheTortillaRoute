@@ -20,13 +20,17 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     let city = '';
+    let search = '';
 
     // tslint:disable-next-line: deprecation
     this.activatedRoute.params.subscribe((params) => {
       city = params.destinationLocation;
+      search = params.searchParam;
 
       if (city !== undefined) {
         this.arrPosts = this.blogServiceService.getPostsByLocation(city);
+      } else if (search !== undefined) {
+        this.arrPosts = this.blogServiceService.getPostsByName(search);
       } else {
         this.arrPosts = this.blogServiceService.getAllPosts();
       }

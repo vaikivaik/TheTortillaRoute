@@ -26,4 +26,7 @@ export class AppComponent {
   selectLocation($event): void {
     this.router.navigate(['/cities', $event.target.value]);
   }
+  findSearch(): void {
+    this.router.navigate(['/search', this.search]);
+  }
 }
